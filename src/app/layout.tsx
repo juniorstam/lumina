@@ -13,17 +13,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://lumina.io',
+    url: 'https://app.stamcom.com.br',
     title: 'Lumina — Seu patrimônio intelectual, finalmente organizado',
     description: 'A infraestrutura universal para identidade educacional e credenciais profissionais.',
     siteName: 'Lumina',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Lumina' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Lumina — Seu patrimônio intelectual, finalmente organizado',
     description: 'A infraestrutura universal para identidade educacional e credenciais profissionais.',
-    creator: '@lumina_io',
+    images: ['/opengraph-image'],
   },
+  metadataBase: new URL('https://app.stamcom.com.br'),
   robots: {
     index: true,
     follow: true,
