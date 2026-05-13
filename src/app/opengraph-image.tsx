@@ -68,10 +68,9 @@ export default async function Image() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: 28,
               }}
             >
-              ◆
+              <span style={{ color: 'white', fontSize: 26, fontWeight: 800 }}>L</span>
             </div>
             <span style={{ fontSize: 38, fontWeight: 700, color: '#FAFAFA', letterSpacing: -1 }}>
               Lumina
