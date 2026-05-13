@@ -27,58 +27,72 @@ function StatCard({
   color: string
 }) {
   return (
-    <div className="bg-[#18181B] border border-zinc-800 rounded-xl p-5 flex items-start gap-4">
-      <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${color}`}>
+    <div className="bg-[#18181B] border border-zinc-800 rounded-xl p-3 lg:p-5 flex items-start gap-3 lg:gap-4">
+      <div className={`w-8 h-8 lg:w-9 lg:h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${color}`}>
         {icon}
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-2xl font-bold text-zinc-100 leading-tight">{value}</p>
+        <p className="text-xl lg:text-2xl font-bold text-zinc-100 leading-tight">{value}</p>
         <p className="text-xs font-medium text-zinc-400 mt-0.5">{label}</p>
-        {sub && <p className="text-xs text-zinc-600 mt-0.5">{sub}</p>}
+        {sub && <p className="text-xs text-zinc-600 mt-0.5 hidden sm:block">{sub}</p>}
       </div>
     </div>
   )
 }
 
+function getPlatformEmoji(platform: string) {
+  if (platform === 'Udemy') return '🎓'
+  if (platform === 'Coursera') return '📚'
+  if (platform === 'Rocketseat') return '🚀'
+  if (platform === 'Hotmart') return '🔥'
+  if (platform === 'LinkedIn Learning') return '💼'
+  return '📖'
+}
+
+function formatDate(dateStr?: string) {
+  if (!dateStr) return 'Não iniciado'
+  return new Date(dateStr).toLocaleDateString('pt-BR', { month: 'short', day: 'numeric' })
+}
+
 function CourseCard({ course }: { course: Course }) {
   return (
-    <div className="flex items-center gap-4 p-4 bg-[#18181B] border border-zinc-800 rounded-xl hover:border-zinc-700 transition-all group">
-      {/* Platform icon placeholder */}
-      <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0 text-lg">
-        {course.platform === 'Udemy' ? '🎓' :
-         course.platform === 'Coursera' ? '📚' :
-         course.platform === 'Rocketseat' ? '🚀' :
-         course.platform === 'Hotmart' ? '🔥' :
-         course.platform === 'LinkedIn Learning' ? '💼' : '📖'}
-      </div>
+    <div className="p-4 bg-[#18181B] border border-zinc-800 rounded-xl hover:border-zinc-700 transition-all">
+      {/* Linha 1: Ícone + Título + Status */}
+      <div className="flex items-start gap-3 mb-3">
+        {/* Ícone da plataforma */}
+        <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0 text-lg">
+          {getPlatformEmoji(course.platform)}
+        </div>
 
-      <div className="flex-1 min-w-0">
-        <div className="flex items-start justify-between gap-2 mb-1.5">
-          <p className="text-sm font-medium text-zinc-200 truncate group-hover:text-zinc-100 transition-colors">
+        {/* Título e plataforma */}
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-semibold text-zinc-100 leading-snug line-clamp-2 mb-1">
             {course.title}
           </p>
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <PlatformBadge platform={course.platform} />
+            {course.instructor && (
+              <span className="text-xs text-zinc-500 truncate max-w-[120px]">· {course.instructor}</span>
+            )}
+          </div>
+        </div>
+
+        {/* Status badge — sempre à direita, não quebra linha */}
+        <div className="flex-shrink-0">
           <StatusBadge status={course.status} />
         </div>
-        <div className="flex items-center gap-2 mb-2">
-          <PlatformBadge platform={course.platform} />
-          <span className="text-xs text-zinc-600">•</span>
-          <span className="text-xs text-zinc-600">{course.instructor}</span>
-        </div>
-        {course.status !== 'not-started' && (
-          <ProgressBar value={course.progress} size="xs" animated />
-        )}
       </div>
 
-      <div className="flex-shrink-0 text-right">
-        <p className="text-sm font-semibold text-zinc-300">
-          {course.progress === 100 ? '✓' : `${course.progress}%`}
-        </p>
-        <p className="text-xs text-zinc-600 mt-0.5">
-          {course.lastAccessed
-            ? new Date(course.lastAccessed).toLocaleDateString('pt-BR', { month: 'short', day: 'numeric' })
-            : 'Não iniciado'}
-        </p>
-      </div>
+      {/* Linha 2: Progress bar + % + Data */}
+      {course.status !== 'not-started' && (
+        <div className="flex items-center gap-3">
+          <div className="flex-1">
+            <ProgressBar value={course.progress} size="xs" animated />
+          </div>
+          <span className="text-xs text-zinc-500 flex-shrink-0">{course.progress}%</span>
+          <span className="text-xs text-zinc-600 flex-shrink-0">{formatDate(course.lastAccessed)}</span>
+        </div>
+      )}
     </div>
   )
 }
@@ -88,7 +102,7 @@ export default function DashboardPage() {
   const expiringSoon = mockCourses.filter(c => c.status === 'subscription').slice(0, 2)
 
   return (
-    <div className="p-4 lg:p-6 max-w-[1400px]">
+    <div className="px-4 py-4 lg:px-6 lg:py-6 max-w-[1400px]">
       {/* Top greeting */}
       <div className="mb-8">
         <div className="flex items-center justify-between">
@@ -119,7 +133,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Stats row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-6">
         <StatCard
           label="Cursos Encontrados"
           value={String(mockUserProfile.totalCourses)}
@@ -167,7 +181,7 @@ export default function DashboardPage() {
       </div>
 
       {/* AI Insight banner */}
-      <div className="mb-6 p-4 bg-blue-600/8 border border-blue-500/20 rounded-xl flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+      <div className="mb-6 p-4 bg-blue-600/8 border border-blue-500/20 rounded-xl flex flex-col sm:flex-row items-start gap-3">
         <div className="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
           <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />

@@ -5,70 +5,66 @@ import { ProgressBar } from '@/components/ui/ProgressBar'
 
 export const metadata: Metadata = { title: 'Library' }
 
+function getPlatformEmoji(platform: string) {
+  if (platform === 'Udemy') return '🎓'
+  if (platform === 'Coursera') return '📚'
+  if (platform === 'Rocketseat') return '🚀'
+  if (platform === 'Hotmart') return '🔥'
+  if (platform === 'LinkedIn Learning') return '💼'
+  if (platform === 'Skillshare') return '🎨'
+  if (platform === 'Kiwify') return '💡'
+  if (platform === 'edX') return '🏛️'
+  if (platform === 'Alura') return '⚡'
+  return '📖'
+}
+
 function CourseCard({ course }: { course: Course }) {
   return (
-    <div className="group bg-[#18181B] border border-zinc-800 hover:border-zinc-700 rounded-xl p-5 flex flex-col gap-4 transition-all card-hover">
-      {/* Header */}
-      <div className="flex items-start justify-between gap-3">
+    <div className="p-4 bg-[#18181B] border border-zinc-800 hover:border-zinc-700 rounded-xl transition-all card-hover">
+      {/* Layout: ícone + info + status */}
+      <div className="flex items-start gap-3">
         <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-lg flex-shrink-0">
-          {course.platform === 'Udemy' ? '🎓' :
-           course.platform === 'Coursera' ? '📚' :
-           course.platform === 'Rocketseat' ? '🚀' :
-           course.platform === 'Hotmart' ? '🔥' :
-           course.platform === 'LinkedIn Learning' ? '💼' :
-           course.platform === 'Skillshare' ? '🎨' :
-           course.platform === 'Kiwify' ? '💡' :
-           course.platform === 'edX' ? '🏛️' :
-           course.platform === 'Alura' ? '⚡' : '📖'}
+          {getPlatformEmoji(course.platform)}
         </div>
-        <StatusBadge status={course.status} />
-      </div>
-
-      {/* Title & instructor */}
-      <div className="flex-1">
-        <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-white transition-colors leading-snug mb-1.5">
-          {course.title}
-        </h3>
-        <p className="text-xs text-zinc-500">{course.instructor}</p>
-      </div>
-
-      {/* Meta */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <PlatformBadge platform={course.platform} />
-          <span className="text-xs text-zinc-600">{course.category}</span>
-        </div>
-
-        {/* Progress */}
-        {course.status !== 'not-started' && (
-          <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[10px] text-zinc-600">Progresso</span>
-              <span className="text-[10px] font-medium text-zinc-400">
-                {course.progress === 100 ? 'Concluído' : `${course.progress}%`}
-              </span>
-            </div>
-            <ProgressBar value={course.progress} size="sm" />
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-semibold text-zinc-100 line-clamp-2 leading-snug mb-1">{course.title}</p>
+          <p className="text-xs text-zinc-500 truncate mb-2">{course.instructor}</p>
+          <div className="flex items-center gap-2">
+            <PlatformBadge platform={course.platform} />
+            <span className="text-xs text-zinc-600 truncate">{course.category}</span>
           </div>
+        </div>
+        <div className="flex-shrink-0">
+          <StatusBadge status={course.status} />
+        </div>
+      </div>
+
+      {/* Progress bar embaixo, full width */}
+      {course.status !== 'not-started' && (
+        <div className="mt-3">
+          <div className="flex justify-between text-xs text-zinc-600 mb-1">
+            <span>Progresso</span>
+            <span>{course.progress === 100 ? 'Concluído' : `${course.progress}%`}</span>
+          </div>
+          <ProgressBar value={course.progress} size="sm" />
+        </div>
+      )}
+
+      <div className="flex justify-between mt-3 pt-2 border-t border-zinc-800/60 text-xs text-zinc-600">
+        <div className="flex items-center gap-1">
+          <svg className="w-3 h-3" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
+            <circle cx="8" cy="8" r="6.5"/>
+            <path d="M8 4v4l2.5 2.5" strokeLinecap="round"/>
+          </svg>
+          {course.duration}
+        </div>
+        {course.price > 0 ? (
+          <span className="font-medium text-zinc-400">
+            {course.currency === 'BRL' ? 'R$' : '$'}{course.price}
+          </span>
+        ) : (
+          <span className="text-green-500">Assinatura</span>
         )}
-
-        {/* Footer */}
-        <div className="flex items-center justify-between pt-1 border-t border-zinc-800/60">
-          <div className="flex items-center gap-1 text-xs text-zinc-600">
-            <svg className="w-3 h-3" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
-              <circle cx="8" cy="8" r="6.5"/>
-              <path d="M8 4v4l2.5 2.5" strokeLinecap="round"/>
-            </svg>
-            {course.duration}
-          </div>
-          {course.price > 0 ? (
-            <span className="text-xs font-medium text-zinc-400">
-              {course.currency === 'BRL' ? 'R$' : '$'}{course.price}
-            </span>
-          ) : (
-            <span className="text-xs text-green-500">Assinatura</span>
-          )}
-        </div>
       </div>
     </div>
   )
@@ -84,7 +80,7 @@ const filterOptions = [
 
 export default function LibraryPage() {
   return (
-    <div className="p-4 lg:p-6 max-w-[1400px]">
+    <div className="px-4 py-4 lg:px-6 lg:py-6 max-w-[1400px]">
       {/* Header */}
       <div className="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
         <div>
@@ -167,8 +163,8 @@ export default function LibraryPage() {
         </div>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+      {/* Grid — lista no mobile, grid no desktop */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
         {mockCourses.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}

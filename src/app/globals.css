@@ -162,6 +162,11 @@ body {
   border-left: 2px solid #3B82F6;
 }
 
+/* Safe area for iPhone bottom nav */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+}
+
 /* Card hover lift */
 .card-hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
