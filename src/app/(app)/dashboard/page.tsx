@@ -88,7 +88,7 @@ export default function DashboardPage() {
   const expiringSoon = mockCourses.filter(c => c.status === 'subscription').slice(0, 2)
 
   return (
-    <div className="p-6 max-w-[1400px]">
+    <div className="p-4 lg:p-6 max-w-[1400px]">
       {/* Top greeting */}
       <div className="mb-8">
         <div className="flex items-center justify-between">
@@ -167,7 +167,7 @@ export default function DashboardPage() {
       </div>
 
       {/* AI Insight banner */}
-      <div className="mb-6 p-4 bg-blue-600/8 border border-blue-500/20 rounded-xl flex items-start gap-4">
+      <div className="mb-6 p-4 bg-blue-600/8 border border-blue-500/20 rounded-xl flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
         <div className="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/20 flex items-center justify-center flex-shrink-0">
           <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
@@ -185,14 +185,14 @@ export default function DashboardPage() {
         </div>
         <Link
           href="/ai"
-          className="flex-shrink-0 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg border border-blue-500/50 transition-all"
+          className="flex-shrink-0 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg border border-blue-500/50 transition-all min-h-[44px] flex items-center"
         >
           Perguntar à IA
         </Link>
       </div>
 
       {/* Main two-column layout */}
-      <div className="grid lg:grid-cols-[1fr_280px] gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
         {/* Left column */}
         <div className="space-y-6">
           {/* Recently Detected */}

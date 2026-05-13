@@ -4,7 +4,7 @@ export const metadata: Metadata = { title: 'Configurações | Lumina' }
 
 export default function SettingsPage() {
   return (
-    <div className="max-w-2xl">
+    <div className="max-w-2xl px-4 py-4 lg:px-6 lg:py-6">
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-zinc-100 tracking-tight">Configurações</h1>
         <p className="text-zinc-500 mt-1">Gerencie sua conta e preferências.</p>

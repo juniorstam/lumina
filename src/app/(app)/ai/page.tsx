@@ -147,9 +147,9 @@ function MessageBubble({ role, content, time }: { role: 'user' | 'assistant'; co
 
 export default function AIPage() {
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-[calc(100vh-3.5rem)] lg:h-screen flex flex-col">
       {/* Header */}
-      <div className="flex-shrink-0 px-6 py-4 border-b border-zinc-800 flex items-center justify-between bg-[#0D0D0F]">
+      <div className="flex-shrink-0 px-4 md:px-6 py-4 border-b border-zinc-800 flex items-center justify-between bg-[#0D0D0F]">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -179,7 +179,7 @@ export default function AIPage() {
         {/* Chat */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-6 py-6 space-y-5">
+          <div className="flex-1 overflow-y-auto px-4 md:px-6 py-6 space-y-5">
             {/* Welcome */}
             <div className="text-center py-4">
               <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-3">
@@ -232,7 +232,7 @@ export default function AIPage() {
           </div>
 
           {/* Input */}
-          <div className="flex-shrink-0 px-6 pb-6 pt-3">
+          <div className="flex-shrink-0 px-4 md:px-6 pb-4 md:pb-6 pt-3">
             <div className="flex items-end gap-3 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 focus-within:border-blue-500/50 focus-within:ring-1 focus-within:ring-blue-500/20 rounded-xl p-3 transition-all">
               <textarea
                 placeholder="Pergunte sobre seus cursos, certificados, gastos, trilhas de aprendizado..."
@@ -251,8 +251,8 @@ export default function AIPage() {
           </div>
         </div>
 
-        {/* Right panel — insights */}
-        <div className="w-72 flex-shrink-0 border-l border-zinc-800 bg-[#0D0D0F] flex flex-col overflow-hidden">
+        {/* Right panel — insights — hidden on mobile */}
+        <div className="hidden lg:flex w-72 flex-shrink-0 border-l border-zinc-800 bg-[#0D0D0F] flex-col overflow-hidden">
           <div className="px-4 py-3.5 border-b border-zinc-800">
             <h2 className="text-xs font-semibold text-zinc-400 uppercase tracking-wide">Insights Ativos</h2>
           </div>

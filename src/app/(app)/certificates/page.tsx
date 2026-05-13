@@ -86,14 +86,14 @@ function CertificateCard({ cert }: { cert: Certificate }) {
 
         {/* Actions */}
         <div className="flex gap-2">
-          <button className="flex-1 py-1.5 text-xs font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 transition-all flex items-center justify-center gap-1.5">
+          <button className="flex-1 py-2 text-xs font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 transition-all flex items-center justify-center gap-1.5 min-h-[44px]">
             <svg className="w-3 h-3" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
               <path d="M8 2v8M4 7l4 4 4-4" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M2 13h12" strokeLinecap="round"/>
             </svg>
             Baixar
           </button>
-          <button className="flex-1 py-1.5 text-xs font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 transition-all flex items-center justify-center gap-1.5">
+          <button className="flex-1 py-2 text-xs font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 transition-all flex items-center justify-center gap-1.5 min-h-[44px]">
             <svg className="w-3 h-3" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
               <path d="M11 5H5M11 5v6M11 5l-7 7" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -110,9 +110,9 @@ export default function CertificatesPage() {
   const expiredCerts = mockCertificates.filter(c => c.status === 'expired')
 
   return (
-    <div className="p-6 max-w-[1400px]">
+    <div className="p-4 lg:p-6 max-w-[1400px]">
       {/* Header */}
-      <div className="mb-6 flex items-start justify-between">
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-zinc-100">Carteira de Certificados</h1>
           <p className="text-sm text-zinc-500 mt-1">
@@ -120,18 +120,20 @@ export default function CertificatesPage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 transition-all">
+          <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 transition-all min-h-[44px]">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
               <path d="M8 2v8M4 7l4 4 4-4" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M2 13h12" strokeLinecap="round"/>
             </svg>
-            Exportar todos
+            <span className="hidden sm:inline">Exportar todos</span>
+            <span className="sm:hidden">Exportar</span>
           </button>
-          <button className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium bg-blue-600 hover:bg-blue-500 border border-blue-500/50 rounded-lg text-white transition-all">
+          <button className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium bg-blue-600 hover:bg-blue-500 border border-blue-500/50 rounded-lg text-white transition-all min-h-[44px]">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
               <path d="M8 3v10M3 8h10" strokeLinecap="round"/>
             </svg>
-            Adicionar manual
+            <span className="hidden sm:inline">Adicionar manual</span>
+            <span className="sm:hidden">Adicionar</span>
           </button>
         </div>
       </div>
@@ -177,7 +179,7 @@ export default function CertificatesPage() {
       </div>
 
       {/* Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         {mockCertificates.map((cert) => (
           <CertificateCard key={cert.id} cert={cert} />
         ))}

@@ -4,6 +4,37 @@ import { PlatformBadge, StatusBadge } from '@/components/ui/Badge'
 
 export const metadata: Metadata = { title: 'Vault' }
 
+function VaultCard({ entry }: { entry: VaultEntry }) {
+  const maskEmail = (email: string) => {
+    const [user, domain] = email.split('@')
+    return `${user.slice(0, 2)}${'•'.repeat(user.length - 2)}@${domain}`
+  }
+
+  return (
+    <div className="bg-[#18181B] border border-zinc-800 rounded-xl p-4 space-y-3">
+      <div className="flex items-center justify-between">
+        <PlatformBadge platform={entry.platform} size="md" />
+        <StatusBadge status={entry.status} />
+      </div>
+      <div>
+        <span className="text-sm font-mono text-zinc-400">{maskEmail(entry.email)}</span>
+        {entry.notes && <p className="text-xs text-zinc-600 mt-0.5">{entry.notes}</p>}
+      </div>
+      <div className="flex items-center gap-2 pt-1">
+        <button className="flex-1 px-2.5 py-2 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded text-xs text-zinc-400 hover:text-zinc-200 transition-all min-h-[44px]">
+          Visualizar
+        </button>
+        <button className="flex-1 px-2.5 py-2 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded text-xs text-zinc-400 hover:text-zinc-200 transition-all min-h-[44px]">
+          Editar
+        </button>
+        <button className="flex-1 px-2.5 py-2 bg-red-600/10 hover:bg-red-600/20 border border-red-500/20 rounded text-xs text-red-400 transition-all min-h-[44px]">
+          Remover
+        </button>
+      </div>
+    </div>
+  )
+}
+
 function VaultRow({ entry }: { entry: VaultEntry }) {
   const maskEmail = (email: string) => {
     const [user, domain] = email.split('@')
@@ -60,16 +91,16 @@ export default function VaultPage() {
   const activeEntries = mockVaultEntries.filter(e => e.status === 'active').length
 
   return (
-    <div className="p-6 max-w-[1400px]">
+    <div className="p-4 lg:p-6 max-w-[1400px]">
       {/* Header */}
-      <div className="mb-6 flex items-start justify-between">
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-zinc-100">Cofre de Acessos</h1>
           <p className="text-sm text-zinc-500 mt-1">
             {mockVaultEntries.length} credenciais armazenadas · {activeEntries} ativas
           </p>
         </div>
-        <button className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium bg-blue-600 hover:bg-blue-500 border border-blue-500/50 rounded-lg text-white transition-all">
+        <button className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium bg-blue-600 hover:bg-blue-500 border border-blue-500/50 rounded-lg text-white transition-all min-h-[44px] self-start sm:self-auto">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
             <path d="M8 3v10M3 8h10" strokeLinecap="round"/>
           </svg>
@@ -172,8 +203,15 @@ export default function VaultPage() {
         </div>
       </div>
 
-      {/* Table */}
-      <div className="bg-[#18181B] border border-zinc-800 rounded-xl overflow-hidden">
+      {/* Mobile cards — visible on small screens */}
+      <div className="md:hidden space-y-3">
+        {mockVaultEntries.map((entry) => (
+          <VaultCard key={entry.id} entry={entry} />
+        ))}
+      </div>
+
+      {/* Table — visible on md+ */}
+      <div className="hidden md:block bg-[#18181B] border border-zinc-800 rounded-xl overflow-hidden">
         <table className="w-full">
           <thead>
             <tr className="border-b border-zinc-800 bg-zinc-900/40">

@@ -21,28 +21,28 @@ export default function ProfilePage() {
   const activeCerts = mockCertificates.filter(c => c.status === 'active').slice(0, 5)
 
   return (
-    <div className="p-6 max-w-[1400px]">
+    <div className="p-4 lg:p-6 max-w-[1400px]">
       {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-zinc-100">Perfil Público</h1>
           <p className="text-sm text-zinc-500 mt-1">Como outras pessoas veem seu portfólio intelectual</p>
         </div>
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 transition-all">
+          <button className="flex items-center gap-1.5 px-3 py-2 text-sm bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-300 transition-all min-h-[44px]">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
               <circle cx="8" cy="5" r="2.5"/>
               <path d="M2 14a6 6 0 0112 0" strokeLinecap="round"/>
             </svg>
             Visualizar
           </button>
-          <button className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-blue-600 hover:bg-blue-500 border border-blue-500/50 rounded-lg text-white font-medium transition-all">
+          <button className="flex items-center gap-1.5 px-3 py-2 text-sm bg-blue-600 hover:bg-blue-500 border border-blue-500/50 rounded-lg text-white font-medium transition-all min-h-[44px]">
             Salvar alterações
           </button>
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-[1fr_320px] gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
         {/* Left — profile preview */}
         <div className="space-y-5">
           {/* Cover + avatar */}

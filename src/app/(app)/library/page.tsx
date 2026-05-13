@@ -84,9 +84,9 @@ const filterOptions = [
 
 export default function LibraryPage() {
   return (
-    <div className="p-6 max-w-[1400px]">
+    <div className="p-4 lg:p-6 max-w-[1400px]">
       {/* Header */}
-      <div className="mb-6 flex items-start justify-between">
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-zinc-100">Biblioteca de Cursos</h1>
           <p className="text-sm text-zinc-500 mt-1">
@@ -94,13 +94,13 @@ export default function LibraryPage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-400 transition-all">
+          <button className="flex items-center gap-1.5 px-3 py-2 text-xs font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-400 transition-all min-h-[44px]">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
               <path d="M2 4h12M4 8h8M6 12h4" strokeLinecap="round"/>
             </svg>
             Filtrar
           </button>
-          <button className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-400 transition-all">
+          <button className="flex items-center gap-1.5 px-3 py-2 text-xs font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-lg text-zinc-400 transition-all min-h-[44px]">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="1.5">
               <path d="M2 5h12M2 8h12M2 11h12" strokeLinecap="round"/>
             </svg>
@@ -110,7 +110,7 @@ export default function LibraryPage() {
       </div>
 
       {/* Search + Filters */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-6">
+      <div className="flex flex-col gap-3 mb-6">
         {/* Search */}
         <div className="relative flex-1">
           <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
@@ -124,7 +124,7 @@ export default function LibraryPage() {
         </div>
 
         {/* Filter chips */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap overflow-x-auto pb-1">
           {filterOptions.map((filter, idx) => (
             <button
               key={filter.value}
@@ -144,7 +144,7 @@ export default function LibraryPage() {
       </div>
 
       {/* Stats bar */}
-      <div className="flex items-center gap-6 p-4 bg-[#111113] border border-zinc-800 rounded-xl mb-6">
+      <div className="flex flex-wrap items-center gap-4 md:gap-6 p-4 bg-[#111113] border border-zinc-800 rounded-xl mb-6">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green-400" />
           <span className="text-xs text-zinc-400">6 Concluídos</span>
@@ -168,7 +168,7 @@ export default function LibraryPage() {
       </div>
 
       {/* Grid */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         {mockCourses.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}

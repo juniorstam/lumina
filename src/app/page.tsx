@@ -40,13 +40,13 @@ function Nav() {
         <div className="flex items-center gap-2">
           <Link
             href="/login"
-            className="px-4 py-1.5 text-sm text-zinc-300 hover:text-zinc-100 transition-colors"
+            className="px-3 py-1.5 text-sm text-zinc-300 hover:text-zinc-100 transition-colors min-h-[44px] flex items-center"
           >
             Entrar
           </Link>
           <Link
             href="/signup"
-            className="px-4 py-1.5 text-sm font-medium bg-blue-600 hover:bg-blue-500 text-white rounded-lg border border-blue-500/50 transition-all"
+            className="px-3 py-1.5 text-sm font-medium bg-blue-600 hover:bg-blue-500 text-white rounded-lg border border-blue-500/50 transition-all min-h-[44px] flex items-center"
           >
             Começar grátis
           </Link>
@@ -76,7 +76,7 @@ function Hero() {
         </div>
 
         {/* Main headline */}
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-zinc-100 leading-[1.08] mb-6 max-w-4xl mx-auto">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-100 leading-[1.08] mb-6 max-w-4xl mx-auto">
           Seu patrimônio intelectual,{' '}
           <span className="gradient-text-blue">finalmente organizado.</span>
         </h1>
@@ -128,8 +128,8 @@ function Hero() {
           <span>Junte-se a mais de <strong className="text-zinc-300">12.000</strong> profissionais construindo seu portfólio intelectual</span>
         </div>
 
-        {/* Product mockup */}
-        <div className="mt-16 relative">
+        {/* Product mockup — hidden on mobile, visible from md */}
+        <div className="mt-16 relative hidden md:block">
           <div className="absolute inset-0 bg-blue-600/5 blur-3xl rounded-full" />
           <DashboardMockup />
         </div>
@@ -263,11 +263,11 @@ function LogosStrip() {
         <p className="text-center text-xs font-semibold text-zinc-600 uppercase tracking-widest mb-8">
           Funciona com todas as plataformas que você usa
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-8">
+        <div className="flex flex-wrap items-center justify-center gap-5 md:gap-8">
           {platforms.map((platform) => (
             <span
               key={platform}
-              className="text-sm font-medium text-zinc-600 hover:text-zinc-400 transition-colors cursor-default"
+              className="text-xs md:text-sm font-medium text-zinc-600 hover:text-zinc-400 transition-colors cursor-default"
             >
               {platform}
             </span>
@@ -314,7 +314,7 @@ function Problem() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {painPoints.map((point) => (
             <div
               key={point.title}
@@ -368,7 +368,7 @@ function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, idx) => (
             <div key={step.number} className="relative">
               {idx < steps.length - 1 && (
@@ -472,7 +472,7 @@ function Features() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {features.map((feature) => (
             <div
               key={feature.title}
@@ -536,7 +536,7 @@ function Testimonials() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t) => (
             <div key={t.author} className="p-6 bg-[#18181B] border border-zinc-800 rounded-xl flex flex-col gap-5">
               <div className="flex">
@@ -638,7 +638,7 @@ function Pricing() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {plans.map((plan) => (
             <div
               key={plan.name}
@@ -738,7 +738,7 @@ function Footer() {
   return (
     <footer className="border-t border-zinc-800 bg-[#0A0A0B] py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
