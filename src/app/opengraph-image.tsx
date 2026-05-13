@@ -20,122 +20,120 @@ export default async function Image() {
           position: 'relative',
         }}
       >
-        {/* Grid pattern background */}
+        {/* Glow azul central */}
         <div
           style={{
             position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
-            backgroundSize: '48px 48px',
-          }}
-        />
-
-        {/* Glow */}
-        <div
-          style={{
-            position: 'absolute',
-            width: 600,
+            width: 700,
             height: 400,
-            borderRadius: '50%',
-            background: 'radial-gradient(ellipse, rgba(59,130,246,0.12) 0%, transparent 70%)',
+            borderRadius: 999,
+            background: 'rgba(59,130,246,0.08)',
             top: '50%',
             left: '50%',
-            transform: 'translate(-50%, -50%)',
+            marginTop: -200,
+            marginLeft: -350,
           }}
         />
 
-        {/* Content */}
+        {/* Borda sutil no topo */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 1,
+            background: 'rgba(255,255,255,0.06)',
+          }}
+        />
+
+        {/* Conteúdo central */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: 0,
             zIndex: 1,
             padding: '0 80px',
           }}
         >
           {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 36 }}>
             <div
               style={{
-                width: 56,
-                height: 56,
-                borderRadius: 14,
+                width: 52,
+                height: 52,
+                borderRadius: 12,
                 background: '#2563EB',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                fontSize: 28,
               }}
             >
-              <svg width="28" height="28" viewBox="0 0 14 14" fill="none">
-                <path d="M7 1L13 4V10L7 13L1 10V4L7 1Z" fill="white" fillOpacity="0.9"/>
-                <path d="M7 4L10 5.5V8.5L7 10L4 8.5V5.5L7 4Z" fill="white" fillOpacity="0.4"/>
-              </svg>
+              ◆
             </div>
-            <span style={{ fontSize: 36, fontWeight: 700, color: '#FAFAFA', letterSpacing: '-1px' }}>
+            <span style={{ fontSize: 38, fontWeight: 700, color: '#FAFAFA', letterSpacing: -1 }}>
               Lumina
             </span>
           </div>
 
-          {/* Pill */}
+          {/* Tag */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 8,
+              gap: 10,
               background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.1)',
+              border: '1px solid rgba(255,255,255,0.08)',
               borderRadius: 999,
-              padding: '8px 20px',
-              marginBottom: 32,
+              padding: '8px 22px',
+              marginBottom: 36,
             }}
           >
-            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#60A5FA' }} />
-            <span style={{ fontSize: 18, color: '#A1A1AA', letterSpacing: '0.05em' }}>
+            <div style={{ width: 8, height: 8, borderRadius: 4, background: '#60A5FA' }} />
+            <span style={{ fontSize: 16, color: '#71717A', letterSpacing: 2 }}>
               IDENTIDADE EDUCACIONAL PROFISSIONAL
             </span>
           </div>
 
-          {/* Headline */}
+          {/* Headline linha 1 */}
           <div
             style={{
-              fontSize: 64,
+              fontSize: 62,
               fontWeight: 800,
-              color: '#FAFAFA',
+              color: '#F4F4F5',
               textAlign: 'center',
               lineHeight: 1.1,
-              letterSpacing: '-2px',
-              marginBottom: 24,
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
+              letterSpacing: -2,
+              marginBottom: 8,
             }}
           >
             Seu patrimônio intelectual,
           </div>
+
+          {/* Headline linha 2 - azul */}
           <div
             style={{
-              fontSize: 64,
+              fontSize: 62,
               fontWeight: 800,
               color: '#3B82F6',
               textAlign: 'center',
               lineHeight: 1.1,
-              letterSpacing: '-2px',
-              marginBottom: 40,
+              letterSpacing: -2,
+              marginBottom: 36,
             }}
           >
             finalmente organizado.
           </div>
 
-          {/* Subtext */}
+          {/* Subtexto */}
           <div
             style={{
-              fontSize: 24,
-              color: '#71717A',
+              fontSize: 22,
+              color: '#52525B',
               textAlign: 'center',
-              maxWidth: 700,
+              maxWidth: 660,
               lineHeight: 1.5,
             }}
           >
@@ -143,17 +141,16 @@ export default async function Image() {
           </div>
         </div>
 
-        {/* Bottom domain */}
+        {/* URL no rodapé */}
         <div
           style={{
             position: 'absolute',
-            bottom: 40,
+            bottom: 36,
             display: 'flex',
             alignItems: 'center',
-            gap: 8,
           }}
         >
-          <span style={{ fontSize: 18, color: '#3F3F46' }}>app.stamcom.com.br</span>
+          <span style={{ fontSize: 17, color: '#3F3F46' }}>app.stamcom.com.br</span>
         </div>
       </div>
     ),
