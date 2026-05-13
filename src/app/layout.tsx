@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   keywords: ['educação', 'aprendizado', 'certificados', 'cursos', 'credenciais', 'desenvolvimento profissional'],
   authors: [{ name: 'Lumina' }],
   creator: 'Lumina',
+  metadataBase: new URL('https://app.stamcom.com.br'),
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
@@ -17,15 +18,14 @@ export const metadata: Metadata = {
     title: 'Lumina — Seu patrimônio intelectual, finalmente organizado',
     description: 'A infraestrutura universal para identidade educacional e credenciais profissionais.',
     siteName: 'Lumina',
-    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Lumina' }],
+    images: [{ url: 'https://app.stamcom.com.br/opengraph-image', width: 1200, height: 630, alt: 'Lumina — Seu patrimônio intelectual, finalmente organizado' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Lumina — Seu patrimônio intelectual, finalmente organizado',
     description: 'A infraestrutura universal para identidade educacional e credenciais profissionais.',
-    images: ['/opengraph-image'],
+    images: ['https://app.stamcom.com.br/opengraph-image'],
   },
-  metadataBase: new URL('https://app.stamcom.com.br'),
   robots: {
     index: true,
     follow: true,
