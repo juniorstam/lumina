@@ -14,9 +14,9 @@ export default function SettingsPage() {
       <section className="mb-6">
         <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-widest mb-3">Perfil</h2>
         <div className="bg-[#18181B] border border-zinc-800 rounded-xl divide-y divide-zinc-800">
-          <SettingRow label="Nome completo" value="Alex Morgan" />
-          <SettingRow label="E-mail" value="alex@example.com" />
-          <SettingRow label="Username" value="@alexmorgan" />
+          <SettingRow label="Nome completo" value="Ingrid Martins" />
+          <SettingRow label="E-mail" value="ingrid@example.com" />
+          <SettingRow label="Username" value="@ingrid" />
           <SettingRow label="Idioma" value="Português (Brasil)" />
         </div>
       </section>
@@ -25,7 +25,7 @@ export default function SettingsPage() {
       <section className="mb-6">
         <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-widest mb-3">E-mails conectados</h2>
         <div className="bg-[#18181B] border border-zinc-800 rounded-xl divide-y divide-zinc-800">
-          <SettingRow label="Gmail" value="alex@gmail.com" badge="Conectado" badgeColor="green" />
+          <SettingRow label="Gmail" value="ingrid@gmail.com" badge="Conectado" badgeColor="green" />
           <SettingRow label="Outlook" value="Não conectado" badge="Conectar" badgeColor="blue" />
           <SettingRow label="Apple Mail" value="Não conectado" badge="Conectar" badgeColor="blue" />
         </div>

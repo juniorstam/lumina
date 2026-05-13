@@ -157,8 +157,8 @@ export function Sidebar() {
             A
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-medium text-zinc-200 truncate">Alex Morgan</p>
-            <p className="text-[10px] text-zinc-500 truncate">alex@example.com</p>
+            <p className="text-xs font-medium text-zinc-200 truncate">Ingrid Martins</p>
+            <p className="text-[10px] text-zinc-500 truncate">ingrid@example.com</p>
           </div>
           <svg className="w-3 h-3 text-zinc-600" fill="none" viewBox="0 0 16 16">
             <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
